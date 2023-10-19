@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/CSS/DashBoard-Notice.css">
+  <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+  <title>CMU_CS445LIS</title>
+</head>
+
+<body>
+  <div class="master-wrapper-page">
+    <div class="header">
+      <div class="header-lower" style="max-width: 1200px;">
+        <div class="header-lower-Logo">
+          <a href="Index.html">
+            <h1>
+              <img class="header-img" src="./assets/img/Logo/MSLogo.png" alt="Logo">
+            </h1>
+          </a>
+        </div>
+        <div class="header-lower-Search">
+          <form class="form-inline">
+            <input class="form-control header-search" type="search" placeholder="  Type Somethings" aria-label="Search">
+            <button class="btn btn-outline-success btn-search" type="submit">
+              <i class="ti-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="header-lower-Items">
+          <button id="noti" href="">
+            <i class="ti-user"></i>
+            <span>User</span>
+          </button>
+          <button id="noti" href="">
+            <i class="ti-settings"></i>
+            <span>Setting</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <div class="body_con">
+      <div class="sidebar">
+        <div class="si_item">
+          <a href="Index.html">
+            <i class="ti-home"></i>
+            <span> Dashboard</span>
+          </a>
+          <a href="Information.html">
+            <i class="ti-user"></i>
+            <span> Information</span>
+          </a>
+          <a href="Notification.html">
+            <i class="ti-bell"></i>
+            <span>Notification</span>
+          </a>
+        </div>
+      </div>
+      <div class="table_DB">
+        <br>
+        <div class="content-first">
+          <div class="content-first-left">
+            <div class="total">
+              <h2>Total Employees</h2>
+              <br>
+              <p>5</p>
+            </div>
+            <div class="total">
+              <h2>Total Department</h2>
+              <br>
+              <p>4</p>
+            </div>
+          </div>
+          <div class="content-first-right">
+            <div class="Earning">
+              <main>
+                <section>
+                  <h2>Total Earnings</h2>
+                  <div class="chart-container">
+                    <canvas id="earnings-chart"></canvas>
+                  </div>
+                </section>
+              </main>
+
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <script>
+                //let employeeList = [];
+                let currentYear = [];
+                let previousYear = [];
+                let currentYearEmp = 0;
+                let currentYearGen = 0;
+                let currentYearEth = 0;
+                let currentYearPart = 0;
+                let currentYearFull = 0;
+                let previousYearEmp = 0;
+                let previousYearGen = 0;
+                let previousYearEth = 0;
+                let previousYearPart = 0;
+                let previousYearFull = 0;
+
+                fetch('http://localhost:3000/employee')
+                  .then(respone => respone.json())
+                  .then(data => {
+                    employeeList = data;
+                    employeeList.forEach(item => {
+                      currentYearEmp = currentYearEmp + Number(item['Paid To Date']);
+                      previousYearEmp = previousYearEmp + Number(item['Paid Last Year']);
+                      if (item.Gender) {
+                        currentYearGen = currentYearGen + Number(item['Paid To Date']);
+                        previousYearGen = previousYearGen + Number(item['Paid Last Year']);
+                      }
+                      if (item.Ethnicity === 'Other') {
+                        currentYearEth = currentYearEth + Number(item['Paid To Date']);
+                        previousYearEth = previousYearEth + Number(item['Paid Last Year']);
+                      }
+                      if (item['idPay Rates'] === 1 || item['idPay Rates'] === 2) {
+                        currentYearPart = currentYearPart + Number(item['Paid To Date']);
+                        previousYearPart = previousYearPart + Number(item['Paid Last Year']);
+                      }
+                      if (item['idPay Rates'] === 3) {
+                        currentYearFull = currentYearFull + Number(item['Paid To Date']);
+                        previousYearFull = previousYearFull + Number(item['Paid Last Year']);
+                      }
+                    });
+
+                    currentYear.push(currentYearEmp);
+                    currentYear.push(currentYearGen);
+                    currentYear.push(currentYearEth);
+                    currentYear.push(currentYearPart);
+                    currentYear.push(currentYearFull);
+                    previousYear.push(previousYearEmp);
+                    previousYear.push(previousYearGen);
+                    previousYear.push(previousYearEth);
+                    previousYear.push(previousYearPart);
+                    previousYear.push(previousYearFull);
+                    // Chart data
+                    var earningsData = {
+                      labels: ["Employee", "Gender(Men)", "Ethnicity", "Part-time", "Full-time"],
+                      currentYear,
+                      previousYear
+
+                    };
+                    // Chart options
+                    var earningsOptions = {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      scales: {
+                        y: {
+                          beginAtZero: true,
+                          ticks: {
+                            callback: function (value, index, values) {
+                              return "$" + value.toLocaleString();
+                            }
+                          }
+                        }
+                      }
+                    };
+
+                    // Create bar chart
+                    var earningsChartCanvas = document.getElementById("earnings-chart");
+                    var earningsChartCtx = earningsChartCanvas.getContext("2d");
+
+                    var earningsChart = new Chart(earningsChartCtx, {
+                      type: "bar",
+                      data: {
+                        labels: earningsData.labels,
+                        datasets: [
+                          {
+                            label: "Current Year",
+                            data: earningsData.currentYear,
+                            backgroundColor: "#ff6666"
+                          },
+                          {
+                            label: "Previous Year",
+                            data: earningsData.previousYear,
+                            backgroundColor: "#ff6384"
+                          }
+                        ]
+                      },
+                      options: earningsOptions
+                    });
+                  })
+                  .catch(err => console.log(err));
+              </script>
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+        <div class="content-2">
+
+          <div class="Department">
+            <main>
+              <section>
+                <h2>Total Earnings by Department</h2>
+                <div class="chart-container">
+                  <canvas id="earningsChart"></canvas>
+                </div>
+              </section>
+            </main>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              let totalEDepartment = [];
+              let EMarketing = 0;
+              let ESales = 0;
+              let EFinance = 0;
+              let EOperations = 0;
+              fetch('http://localhost:3000/employee')
+                .then(respone => respone.json())
+                .then(data => {
+                  employeeList = data;
+                  employeeList.forEach(item => {
+                    if (item.Department === 'Marketing') {
+                      if (item['idPay Rates'] === 1) {
+                        EMarketing = EMarketing + Number(item.Salary) * 8 * 30;
+                      }
+                      if (item['idPay Rates'] === 2) {
+                        EMarketing = EMarketing + Number(item.Salary) * 30;
+                      }
+                      if (item['idPay Rates'] === 3) {
+                        EMarketing = EMarketing + Number(item.Salary);
+                      }
+                    }
+                    else if (item.Department === 'Sales') {
+                      if (item['idPay Rates'] === 1) {
+                        ESales = ESales + Number(item.Salary) * 8 * 30;
+                      }
+                      if (item['idPay Rates'] === 2) {
+                        ESales = ESales + Number(item.Salary) * 30;
+                      }
+                      if (item['idPay Rates'] === 3) {
+                        ESales = ESales + Number(item.Salary);
+                      }
+                    }
+                    else if (item.Department === 'Finance') {
+                      if (item['idPay Rates'] === 1) {
+                        EFinance = EFinance + Number(item.Salary) * 8 * 30;
+                      }
+                      if (item['idPay Rates'] === 2) {
+                        EFinance = EFinance + Number(item.Salary) * 30;
+                      }
+                      if (item['idPay Rates'] === 3) {
+                        EFinance = EFinance + Number(item.Salary);
+                      }
+                    }
+                    else {
+                      if (item['idPay Rates'] === 1) {
+                        EOperations = EOperations + Number(item.Salary) * 8 * 30;
+                      }
+                      if (item['idPay Rates'] === 2) {
+                        EOperations = EOperations + Number(item.Salary) * 30;
+                      }
+                      if (item['idPay rates'] === 3) {
+                        EOperations = EOperations + Number(item.Salary);
+                      }
+                    }
+                  })
+                  totalEDepartment.push(EMarketing);
+                  totalEDepartment.push(ESales);
+                  totalEDepartment.push(EFinance);
+                  totalEDepartment.push(EOperations);
+                  // Sample data for department earnings
+                  var departmentData = {
+                    labels: ['Marketing', 'Sales', 'Finance', 'Operations'],
+                    datasets: [{
+                      label: 'Earnings',
+                      data: totalEDepartment,
+                      backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                      borderColor: 'rgba(75, 192, 192, 1)',
+                      borderWidth: 1
+                    }]
+                  };
+
+                  // Create the chart
+                  var ctx = document.getElementById('earningsChart').getContext('2d');
+                  var earningsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: departmentData,
+                    options: {
+                      indexAxis: 'y',
+                      plugins: {
+                        title: {
+                          display: true,
+                          text: 'Department Earnings'
+                        },
+                        legend: {
+                          display: false
+                        }
+                      },
+                      scales: {
+                        x: {
+                          beginAtZero: true,
+                          ticks: {
+                            callback: function (value, index, values) {
+                              return '$' + value.toLocaleString();
+                            }
+                          }
+                        },
+                        y: {
+                          ticks: {
+                            callback: function (value, index, values) {
+                              var label = departmentData.labels[index];
+                              if (label.length > 10) {
+                                return label.slice(0, 10) + '...';
+                              }
+                              return label;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                })
+
+            </script>
+          </div>
+          <div class="Status">
+            <main>
+              <section>
+                <h2>Employees</h2>
+                <div class="chart-container">
+                  <canvas id="statusChart"></canvas>
+                </div>
+              </section>
+            </main>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              let totalEmp = [];
+              let partTime = 0;
+              let fullTime = 0;
+              fetch('http://localhost:3000/employee')
+                .then(response => response.json())
+                .then(data => {
+                  employeeList = data;
+                  employeeList.forEach(item => {
+                    if (item['idPay Rates'] === 1 || item['idPay Rates'] === 2) {
+                      partTime = partTime + 1;
+                    }
+                    else {
+                      fullTime = fullTime + 1;
+                    }
+                  })
+                  totalEmp.push(partTime);
+                  totalEmp.push(fullTime);
+                  // Sample data for employee count by status
+                  var statusData = {
+                    labels: ['Part-time', 'Full-time'],
+                    datasets: [{
+                      data: totalEmp,
+                      backgroundColor: ['rgba(75, 192, 192, 0.8)', 'rgba(54, 162, 235, 0.8)'],
+                      borderColor: '#fff',
+                      borderWidth: 1
+                    }]
+                  };
+
+                  // Create the chart
+                  var ctx = document.getElementById('statusChart').getContext('2d');
+                  var statusChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: statusData,
+                    options: {
+                      plugins: {
+                        tooltip: {
+                          callbacks: {
+                            label: function (context) {
+                              var label = context.label || '';
+                              var value = context.parsed || 0;
+                              return label + ': ' + value + ' employees';
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                })
+
+            </script>
+          </div>
+        </div>
+        <br><br>
+        <div class="content-3">
+          <div class="Vacation">
+            <main>
+              <section>
+                <h2>Total Vacation Days Taken</h2>
+                <div class="chart-container">
+                  <canvas id="vacation-days-chart"></canvas>
+                </div>
+              </section>
+            </main>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              let currentYearVacation = [];
+              let previousYearVacation = [];
+              let currentVacationEmp = 0;
+              let currentVacationGEn = 0;
+              let currentVacationEth = 0;
+              let currentVacationPart = 0;
+              let currentVacationFull = 0;
+              let previousVacationEmp = 0;
+              let previousVacationGen = 0;
+              let previousVacationEth = 0;
+              let previousVacationPart = 0;
+              let previousVacationFull = 0
+              fetch('http://localhost:3000/employee')
+                .then(response => response.json())
+                .then(data => {
+                  employeeList = data;
+                  const PresentYear = new Date().getFullYear();
+                  employeeList.forEach(item => {
+                    if (item['Vacation Day']) {
+                      let string = item['Vacation Day'];
+
+                      let arr = string.split(',');
+
+                      arr.forEach(element => {
+                        let arr1 = element.split('-');
+
+                        if (Number(arr1[2]) === PresentYear) {
+
+                          currentVacationEmp = currentVacationEmp + 1;
+                          if(item.Gender) {
+                            currentVacationGEn = currentVacationGEn + 1;
+                          }
+                          if(item.Ethnicity === 'Other') {
+                            currentVacationEth = currentVacationEth + 1;
+                          }
+                          if(item['idPay Rates'] === 1 || item['idPay Rates'] === 2) {
+                            currentVacationPart = currentVacationPart + 1;
+                          }
+                          if(item['idPay Rates'] === 3) {
+                            currentVacationFull = currentVacationFull + 1;
+                          }
+                        }
+                        if (Number(arr1[2]) === (PresentYear - 1)) {
+
+                          previousVacationEmp = previousVacationEmp + 1;
+                          if(item.Gender) {
+                            previousVacationGen = previousVacationGen + 1;
+                          }
+                          if(item.Ethnicity === 'Other') {
+                            previousVacationEth = previousVacationEth + 1;
+                          }
+                          if(item['idPay Rates'] === 1 || item['idPay Rates'] === 2) {
+                            previousVacationPart = previousVacationPart + 1;
+                          }
+                          if(item['idPay Rates'] === 3) {
+                            previousVacationFull = previousVacationFull + 1;
+                          }
+                        }
+                      })
+                    }
+                  })
+                  currentYearVacation.push(currentVacationEmp);
+                  currentYearVacation.push(currentVacationGEn);
+                  currentYearVacation.push(currentVacationEth);
+                  currentYearVacation.push(currentVacationPart);
+                  currentYearVacation.push(currentVacationFull);
+                  previousYearVacation.push(previousVacationEmp);
+                  previousYearVacation.push(previousVacationGen);
+                  previousYearVacation.push(previousVacationEth);
+                  previousYearVacation.push(previousVacationPart);
+                  previousYearVacation.push(previousVacationFull);
+                   // Chart data
+              var vacationDaysData = {
+                labels: ["Employee", "Gender(Men)", "Ethnicity", "Part-time", "Full-time"],
+                currentYear: currentYearVacation,
+                previousYear: previousYearVacation
+              };
+
+              // Chart options
+              var vacationDaysOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    ticks: {
+                      precision: 0
+                    }
+                  }
+                }
+              };
+
+              // Create bar chart
+              var vacationDaysChartCanvas = document.getElementById("vacation-days-chart");
+              var vacationDaysChartCtx = vacationDaysChartCanvas.getContext("2d");
+
+              var vacationDaysChart = new Chart(vacationDaysChartCtx, {
+                type: "bar",
+                data: {
+                  labels: vacationDaysData.labels,
+                  datasets: [
+                    {
+                      label: "Current Year",
+                      data: vacationDaysData.currentYear,
+                      backgroundColor: "#66ffff"
+                    },
+                    {
+                      label: "Previous Year",
+                      data: vacationDaysData.previousYear,
+                      backgroundColor: "#ffccff"
+                    }
+                  ]
+                },
+                options: vacationDaysOptions
+              });
+                })
+                .catch(err => console.log(err))
+             
+            </script>
+          </div>
+          <div class="Benefit">
+            <main>
+              <section>
+                <h2>Average Benefits Paid</h2>
+                <div class="chart-container">
+                  <canvas id="benefits-chart"></canvas>
+                </div>
+              </section>
+            </main>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              let fullPerson = [];
+              let benefits = [];
+              fetch('http://localhost:3000/fullperson')
+              .then(response => response.json())
+              .then(data => {
+                fullPerson = data;
+                let benefitsSH = 0;
+                let nbbenefitsSH = 0;
+                let benefitsEM = 0;
+                let nbbenefitsEM = 0;
+                fullPerson.forEach(item => {
+                  if(item.Shareholder_Status) {
+                    benefitsSH = benefitsSH + item.Benefit_Paid;
+                    nbbenefitsSH = nbbenefitsSH + 1;
+                  }
+                  else {
+                    benefitsEM = benefitsEM + item.Benefit_Paid;
+                    nbbenefitsEM = nbbenefitsEM + 1;
+                  }
+                })
+                let paidSH = benefitsSH / nbbenefitsSH;
+                let paidEM = benefitsEM / nbbenefitsEM;
+                benefits.push(paidSH),
+                benefits.push(paidEM);
+                // Chart data
+              var benefitsData = {
+                labels: ["Shareholders", "Employee"],
+                toDate: benefits,
+                benefitsPlan: ["Plan A", "Plan B"]
+              };
+
+              // Chart options
+              var benefitsOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    ticks: {
+                      precision: 0,
+                      callback: function (value, index, values) {
+                        return "$" + value.toLocaleString();
+                      }
+                    }
+                  }
+                }
+              };
+
+              // Create bar chart
+              var benefitsChartCanvas = document.getElementById("benefits-chart");
+              var benefitsChartCtx = benefitsChartCanvas.getContext("2d");
+
+              var benefitsChart = new Chart(benefitsChartCtx, {
+                type: "bar",
+                data: {
+                  labels: benefitsData.labels,
+                  datasets: [
+                    {
+                      label: "To Date",
+                      data: benefitsData.toDate,
+                      backgroundColor: "#36a2eb"
+                    }
+                  ]
+                },
+                options: benefitsOptions
+              });
+              })
+              
+            </script>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+</body>
+<footer>
+  <p>Copyright © 2023 Integration by Vang Đẹp Trai</p>
+</footer>
+<script src="./DashBoard.js"></script>
+
+</html>

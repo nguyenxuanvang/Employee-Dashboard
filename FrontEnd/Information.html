@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/CSS/infor.css">
+    <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+    <title>CMU_CS445LIS</title>
+</head>
+<body>
+    <div class="master-wrapper-page">
+        <div class="header">
+            <div class="header-lower" style="max-width: 1200px;">
+                <div class="header-lower-Logo">
+                    <a href="Index.html">
+                        <h1>
+                            <img class="header-img" src="./assets/img/Logo/MSLogo.png" alt="Logo">
+                        </h1>
+                    </a>
+                </div>
+                <div class="header-lower-Search">
+                    <form class="form-inline">
+                        <input class="form-control header-search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success btn-search" type="submit">
+                            <i class="ti-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="header-lower-Items">
+                    <button id="noti" href="">
+                        <i class="ti-settings"></i>
+                        <span>Setting</span>
+                    </button>
+                    <button id="noti" href="">
+                        <i class="ti-user"></i>
+                        <span>User</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="body_con">
+            <div class="sidebar">
+                <div class="si_item">
+                    <a href="Index.html">
+                        <i class="ti-home"></i>
+                        <span> Dashboard</span>
+                    </a>
+                    <a href="Information.html">
+                        <i class="ti-user"></i>
+                        <span> Information</span>
+                    </a>
+                    <a href="Notification.html">
+                        <i class="ti-bell"></i>
+                        <span>Notification</span>
+                    </a>
+                </div>
+            </div>
+            <div class="table_EP">
+                <div class="infomation_EP">
+                    <div class="table-icon">
+                        <button class="btn-ep add">Add</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Employee ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Gender
+                                </th>
+                                <th>
+                                    Employment Status
+                                </th>
+                                <th>
+                                    Department
+                                </th>
+                                <th>
+                                    Date Of Birth
+                                </th>
+                                <th>
+                                    Phone Number
+                                </th>
+                                <th>
+                                    Salary
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2023 Integration by Vang Đẹp Trai</p>
+    </div>
+    <div class="form_input">
+        <button class="btn-cancel-form">X</button>
+        <div class="body-form">
+            <div class="sub-form">
+                <button class="btn-cancel-subform">X</button>
+                <p class="sub-form-header">Nhập Thông Tin</p>
+                <div class="form-insert-person">
+                    <div>
+                        <p>First Name</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Last Name</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Middle Initiale</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Address 1</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Address 2</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>City</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>State</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Zip</p>
+                        <input type="number">
+                    </div>
+                    <div>
+                        <p>Email</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Phone Number</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Date of Birth</p>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <p>Social Security Number</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Driver License</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Marital Status</p>
+                        <select>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Gender</p>
+                        <select>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                        
+                    </div>
+                    <div>
+                        <p>Shareholder Status</p>
+                        <select>
+                            <option value="1">True</option>
+                            <option value="0">False</option>
+                        </select>
+                    </div>
+                    <!-- <div>
+                        <p>Benefit Plans</p>
+                        <input type="number">
+                    </div> -->
+                    <div>
+                        <p>Ethnicity</p>
+                        <select>
+                            <option value="Kinh">Kinh</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-add-subform">
+                    <button>Thêm</button>
+                </div>
+            </div>
+            <div class="div-add">
+                <button class="add-person">Add New Person</button>
+            </div>
+            <div class="table">
+                <div class="thead">
+                    <span>Person ID</span>
+                    <span>First Name</span>
+                    <span>Last Name</span>
+                    <span>Middle Initial</span>
+                    <span>Address 1</span>
+                    <span>Address 2</span>
+                    <span>City</span>
+                    <span>State</span>
+                    <span>Zip</span>
+                    <span>Email</span>
+                    <span>Phone Number</span>
+                    <span>Date Of Birth</span>
+                    <span>Social Security Number</span>
+                    <span>Driver License</span>
+                    <span>Marital Status</span>
+                    <span>Gender</span>
+                    <span>Shareholder Status</span>
+                    <span>Benefit Plans</span>
+                    <span>Ethnicity</span>
+                    <span>Add To Employee</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-information">
+        <button class="cancel-form-information">X</button>
+        <p class="header-form-information">Thông Tin Chi Tiết Của Nhân Viên Vang Đẹp Trai</p>
+        <div class="body-form-information">
+            <div class="detail-information">
+                
+            </div>
+        </div>
+    </div>
+    <div class="form-edit-information">
+        <button class="cancel-edit-form-information">X</button>
+        <p class="header-edit-form-information">Cập Nhật Thông Tin Của Nhân Viên Vang Đẹp Trai</p>
+        <div class="body-edit-form-information">
+            <div class="edit-information">
+                <div>
+                    <p>First Name</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Last Name</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Middle Initiale</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Address 1</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Address 2</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>City</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>State</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Zip</p>
+                    <input type="number">
+                </div>
+                <div>
+                    <p>Email</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Phone Number</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Date of Birth</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Social Security Number</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Driver License</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Marital Status</p>
+                    <select>
+                        <option value='Married'>Married</option>
+                        <option value='Single'>Single</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Gender</p>
+                    <select>
+                        <option value='1'>Nam</option>
+                        <option value='0'>Nữ</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Shareholder Status</p>
+                    <select>
+                        <option value='1'>True</option>
+                        <option value='0'>False</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Benefit Plans</p>
+                    <select>
+                        <option value='1'>CC</option>
+                        <option value='2'>Cl</option>
+                        <option value='3'>Cmm</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Ethnicity</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Department</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Division</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Start Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>End Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Job Title</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Supervisor</p>
+                    <input type="number" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Job Category</p>
+                    <select>
+                        <option value="Website">Website</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Desktop">Desktop</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Location</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Departmen Code</p>
+                    <input type="number" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Salary Type</p>
+                    <select>
+                        <option value="1">Hourly</option>
+                        <option value="2">Daily</option>
+                        <option value="3">Monthly</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Pay Period</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Hours Per Week</p>
+                    <input type="number" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Hazardous Training</p>
+                    <select>
+                        <option value="1">True</option>
+                        <option value="0">False</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Emergency Contact Name</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Emergency Phone Number</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Relationship</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Employment Status</p>
+                    <select>
+                        <option value="Active">Active</option>
+                        <option value="Rehired">Rehired</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Hire Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Workers Comp Code</p>
+                    <input type="text" placeholder="allow null">
+                </div>
+                <div>
+                    <p>Termination Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Rehire Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Last_Review_Date</p>
+                    <input type="date">
+                </div>
+                <div>
+                    <p>Vacation Days</p>
+                    <input type="number">
+                </div>
+            </div>
+            <div class="btn-update-information">
+                <button>Lưu</button>
+            </div>
+        </div>
+    </div>
+    <script src="./Information.js"></script>
+</body>
+
+</html>

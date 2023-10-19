@@ -1,0 +1,806 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif ;
+}
+html{
+  height: 100%;
+}
+
+.master-wrapper-page{
+    background-color: aliceblue;
+}
+.master-wrapper-page .header{
+    width: 100%;
+    /* background-color: #515154; */
+    position: sticky;
+    top: 0px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    background: #FAFAFA;
+    border: 1px solid #BBBBBB;
+
+}
+
+.master-wrapper-page .body_con{
+    min-height: 100vh;
+}
+
+.header .header-lower{
+    display: flex;
+    max-width: 1185px;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin: auto;
+}
+.header .header-lower .header-lower-Logo{
+    padding-top: 5px;
+}
+.header .header-lower .header-lower-Logo .header-img{
+    height: 65px;
+}
+.header .header-lower .header-lower-Search{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header .header-search{
+    height: 40px;
+    min-width: 300px;
+    border-radius: 10px;
+}
+.header .btn-search{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    border: 1px solid #BBBBBB;
+}
+.header .btn-search:hover{
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-lower-Items #noti:nth-child(1){
+    width: 60px;
+    height: 60px;
+    background-color: #FAFAFA;
+    border: none;
+}
+.header-lower-Items #noti:nth-child(2){
+    width: 60px;
+    height: 60px;
+    background-color: #FAFAFA;
+    border: none;
+    margin-left: 5px;
+}
+.header-lower-Items #noti:hover{
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.body_con{
+    background-color: #DBDBDB;
+    display: flex;
+}
+.sidebar{
+    background-color: #FAFAFA;
+    flex: 1;
+    /*height: 1400px;*/
+    /* background: gray; */
+}
+.table_DB{
+    background-color: #DBDBDB;
+	flex: 3;
+    /*height: 1350px;*/
+}
+
+.SelectDapartment {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20vw;
+    height: 15.8vh;
+}
+.SelectEmployee {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20vw;
+    height: 15.8vh;
+}
+.TotalDepartment {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20vw;
+    height: 15.8vh;;
+    text-align: center;
+}
+.TotalEmployee {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20vw;
+    height: 15.8vh;
+    text-align: center;
+}
+.ProductivityRate {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 34vh;
+    text-align: center;
+}
+.OverallLaborEffective {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 34vh;
+    text-align: center;
+}
+.row {
+    display: flex;
+	flex-wrap: wrap;
+    flex: 3;
+    /*height: 34vh;*/
+} 
+.PFAmount {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 15.8vh;
+    text-align: center;
+}
+.ReimbursementAmount {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 15.8vh;
+    text-align: center;
+}
+.AbsenteeRate {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 15.8vh;
+    text-align: center;
+}
+.TurnoverRatio {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 20.1vw;
+    height: 15.8vh;
+    text-align: center;
+}
+.EmployeesByStatus {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 41.3vw;
+    height: 42vh;
+}
+.EmployeesByExperience {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 41.3vw;
+    height: 42vh;
+}
+.EmployeesByAgeGroup {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 41.3vw;
+    height: 42vh;
+}
+.AbsenteeRateByDepartment {
+	background-color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0,0,0,4);
+	margin: 10px;
+	padding: 20px;
+    width: 41.3vw;
+    height: 42vh;
+}
+.si_item{
+    display: flex;
+    flex-direction: column;
+}
+.si_item a{
+    text-decoration: none;
+    color: #6C5F5F;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.si_item a:hover{
+    background-color: #D9D9D9;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.si_item a i{
+    margin-right: 10px;
+}
+.footer {
+    background-color: #FAFAFA;
+    color: #000000;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #BBBBBB;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+ }
+ .table_EP{
+    background-color: #DBDBDB;    
+    flex: 4;
+    height: 1350px;
+
+}
+.infomation_EP{
+    background-color: #FAFAFA;
+    margin: 12px 24px;
+    height: 1338px;
+    padding: 0px 20px;
+    overflow-y: scroll;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+}
+.table>thead {
+    vertical-align: bottom;
+}
+.table>:not(caption)>*>* {
+    padding: 6px 45px;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: var(--bs-border-width);
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+.table-icon{
+    width: 100%;
+    height: 38px;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-ep{
+    display: flex;
+    height: 30px;
+    width: 70px;
+    justify-content: center;
+    align-items: center;  
+    margin: 8px;
+    border: 2px solid #BFB6B6;
+    border-radius: 10px;
+    background-color:  #FAFAFA;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+ .btn-ep .Edit:hover{
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+.btn {
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: var(--bs-border-radius);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    background-color: var(--bs-btn-bg);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 4px;
+}
+.dropdown-menu {
+    position: absolute;
+    z-index: var(--bs-dropdown-zindex);
+    display: none;
+    min-width: var(--bs-dropdown-min-width);
+    padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
+    margin: 0;
+    font-size: var(--bs-dropdown-font-size);
+    color: var(--bs-dropdown-color);
+    text-align: left;
+    list-style: none;
+    background-color: var(--bs-dropdown-bg);
+    background-clip: padding-box;
+    border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+    border-radius: var(--bs-dropdown-border-radius);
+}
+
+.btn-secondary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #6c757d;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #5c636a;
+    --bs-btn-hover-border-color: #565e64;
+    --bs-btn-focus-shadow-rgb: 130,138,145;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #565e64;
+    --bs-btn-active-border-color: #51585e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #6c757d;
+    --bs-btn-disabled-border-color: #6c757d;
+}
+
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    clear: both;
+    font-weight: 400;
+    color: var(--bs-dropdown-link-color);
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--bs-dropdown-item-border-radius,0);
+}
+.add:hover {
+    opacity: 0.9;
+    background-color: #D9D9D9;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 30px;
+}
+.data-table thead tr th {
+    background-color: #96d5f5;
+}
+.data-table tbody tr:hover {
+    cursor: pointer;
+    background-color: #ece5e5;
+}
+.data-table tbody tr td:last-child button {
+    font-size: 15px;
+    width: 60px;
+    margin-bottom: 5px;
+}
+.data-table tbody tr td,
+.data-table thead tr th {
+    text-align: center;
+    padding: 3px;
+    border: 3px solid #000000;
+    word-wrap: break-word;
+}
+.form_input {
+    width: 1000px;
+    height: 650px;
+    background-color: #6c757d;
+    position: fixed;
+    top: 50px;
+    left: 25%;
+    display: none;
+}
+/* .master-wrapper-page {
+    opacity: 0.5;
+} */
+.cancel-event {
+    pointer-events: none;
+}
+.btn-cancel-form {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-left: 973px;
+    background-color: #6c757d;
+    border: none;
+}
+.btn-cancel-form:hover {
+    color: #fff;
+    background-color: red;
+}
+.body-form {
+    position: relative;;
+}
+.body-form .sub-form {
+    position: absolute;
+    width: 1000px;
+    height: 700px;
+    background-color: #6c757d;
+    top: -60px;
+    display: none;
+}
+.sub-form .sub-form-header {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+}
+.sub-form .form-insert-person {
+    height: 83%;
+    overflow-y: auto;
+    margin-top: 10px;
+    border: 3px solid #000000;
+    padding-top: 10px;
+    background-color: #BBBBBB;
+}
+.sub-form .form-insert-person div {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 10px;
+}
+.sub-form .form-insert-person div input {
+    outline: none;
+}
+.sub-form .btn-add-subform {
+    text-align: center;
+}
+.sub-form .btn-add-subform button {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.sub-form .btn-add-subform button:hover {
+    background-color: #D9D9D9;
+}
+.body-form .sub-form .btn-cancel-subform {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-left: 973px;
+    background-color: #6c757d;
+    border: none;
+    margin-top: -2px;
+}
+.body-form .sub-form .btn-cancel-subform:hover {
+    color: #fff;
+    background-color: red;
+}
+.body-form .div-add {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.body-form .div-add .add-person {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.body-form .div-add .add-person:hover {
+    background-color: #D9D9D9;
+}
+.body-form .table {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin: 0px 15px;
+    height: 500px;
+}
+.body-form .table span {
+    border: 1px solid #000000;
+    padding: 3px;
+}
+.body-form .table .thead {
+    font-weight: 700;
+    color: #fff;
+    font-size: 15px;
+}
+.body-form .table .thead span {
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+}
+.body-form .table .thead span:nth-child(13) {
+    width: 180px;
+}
+
+.body-form .table .tbody {
+    margin-top: 5px;
+    font-size: 15px;
+}
+.body-form .table .tbody span {
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.body-form .table .tbody span:nth-child(13) {
+    width: 180px;
+}
+
+.body-form .table .tbody span:last-child {
+    font-size: 15px;
+    color: #fff;
+    border: 3px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50px;
+    margin-left: 50px;
+}
+.body-form .table .tbody span:last-child:hover {
+    background-color: #c1b9b9;
+    font-weight: 700;
+}
+.form-information {
+    width: 1000px;
+    height: 600px;
+    background-color: #6c757d;
+    position: fixed;
+    top: 100px;
+    left: 25%;
+    display: none;
+}
+.cancel-form-information {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-left: 973px;
+    background-color: #6c757d;
+    border: none;
+}
+.cancel-form-information:hover {
+    color: #fff;
+    background-color: red;
+}
+.form-information .header-form-information {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.form-information .body-form-information {
+    padding: 15px;
+}
+.form-information .body-form-information .detail-information {
+    height: 500px;
+    overflow-y: auto;
+    border: 3px solid #000000;
+    padding: 15px;
+}
+.form-information .body-form-information .detail-information div {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+}
+.form-information .body-form-information .detail-information div p {
+    font-size: 17px;
+    font-weight: 700;
+}
+.form-information .body-form-information .detail-information div span {
+    width: 450px;
+}
+.form-information .body-form-information .information-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 30px;
+    width: 3700px;  
+}
+.form-information .body-form-information .information-table th {
+    background-color: #96d5f5;
+}
+.form-information .body-form-information .information-table th,
+.form-information .body-form-information .information-table td {
+    padding: 5px;
+    border: 3px solid #000000;
+}
+.form-edit-information {
+    width: 1000px;
+    height: 650px;
+    background-color: #6c757d;
+    position: fixed;
+    top: 70px;
+    left: 25%;
+    display: none;
+}
+.cancel-edit-form-information {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-left: 973px;
+    background-color: #6c757d;
+    border: none;
+}
+.cancel-edit-form-information:hover {
+    color: #fff;
+    background-color: red;
+}
+.form-edit-information .header-edit-form-information {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.form-edit-information .body-edit-form-information {
+    padding: 10px;
+}
+.form-edit-information .body-edit-form-information .edit-information {
+    height: 500px;
+    overflow-y: auto;
+    border: 3px solid #000000;
+}
+.form-edit-information .body-edit-form-information .edit-information div {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 10px;
+}
+.form-edit-information .body-edit-form-information .edit-information div p {
+    font-weight: 700;
+}
+.form-edit-information .body-edit-form-information .edit-information div input {
+    outline: none;
+}
+.btn-update-information {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.btn-update-information button {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+}
+.btn-update-information button:hover {
+    background-color: #BFB6B6;
+}
+.form-change-person {
+    width: 1000px;
+    height: 650px;
+    background-color: #6c757d;
+    position: fixed;
+    top: 50px;
+    left: 25%;
+    display: none;
+}
+.cancel-form-change-person {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-left: 973px;
+    background-color: #6c757d;
+    border: none;
+}
+.cancel-form-change-person:hover {
+    color: #fff;
+    background-color: red;
+}
+.form-change-person .header-form-change-person {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.form-change-person .body-form-change-person {
+    padding: 10px;
+}
+.form-change-person .body-form-change-person .change-person {
+    height: 500px;
+    overflow-y: auto;
+    border: 3px solid #000000;
+}
+.form-change-person .body-form-change-person .change-person div {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 400px;
+    margin-bottom: 10px;
+}
+.form-change-person .body-form-change-person .change-person div p {
+    font-weight: 700;
+}
+.form-change-person .body-form-change-person .change-person div:nth-child(-n+18) {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 45px;
+    margin-bottom: 10px;
+}
+.form-change-person .body-form-change-person .change-person div:nth-child(-n+18) span {
+    width: 500px;
+}
+.form-change-person .body-form-change-person .change-person div input {
+    outline: none;
+}
+.btn-add-person-to-employee {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.btn-add-person-to-employee button {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+}
+.btn-add-person-to-employee button:hover {
+    background-color: #BFB6B6;
+}
