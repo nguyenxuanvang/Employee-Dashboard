@@ -1,11 +1,9 @@
 
-// Import Express framework
 const express = require('express');
 const cors = require('cors');
 const sql = require('mssql');
 const mysql = require('mysql2');
 
-// Create an instance of Express
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -36,7 +34,6 @@ const formatDate = (str) => {
     }
     return 'NULL';
 }
-// Define a route
 
 app.get('/', (req, res) => {
     res.send('Hello');
